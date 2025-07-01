@@ -9,14 +9,17 @@ class Home extends BaseController
     public function index()
     {
         $model = new Usermodel();
-        $data['users'] = $model->getall();
-        return view('user', $data)
+        // $data['users'] = $model->getall();
+        $data['users'] = $model->findAll(); //perubahan function findAll
+        // return view('user', $data)
+        return view('user', $data); //pembetulan        
     }
 
     public function tambah()
     {
         if($this->request->getMethod() === 'POST'){
-            $userModel = new usermodel;
+            // $userModel = new usermodel; 
+            $userModel = new Usermodel; //Pembetulan 
             $userModel->insert([
                 'name' => $this->request->getPost('nama'),
                 'email' => $this->request->getVar('email'),
